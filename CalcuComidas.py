@@ -1,6 +1,6 @@
 import json
 
-registros = json.loads(open("regisxday.txt", "r").read())
+registros = json.loads(open("regisxday.txt", "r").read()) #En estas dos lineas cargo los datos de las comidas y de los registros ya guardados.
 comidas = json.loads(open("listaComidas.txt", "r").read())
 
 
@@ -58,11 +58,11 @@ def caloriasDiarias(fecha):
 	
 
 
-def agregarComida(nombre,carb,prot,gras):
+def agregarComida(nombre,carb,prot,gras): #agrega una comida al dict en el cual se guardan los datos, tener en cuenta que la cantidad de carb, prot, y gras, tienen que ser en gramos y la cantidad en 100g de dicho alimento
 	comidas[nombre] = [carb,prot,gras]
 	open("listaComidas.txt", "w").write(json.dumps(comidas)) 
 
-def nuevaComida(fecha):
+def nuevaComida(fecha): #Agrega un dia al registro, una tupla de 5 array con 3 numeros, inicialmente 0 y se le suman dependiendo la cantidad de comida y qu comida se consume.
 	registros[fecha] = ([0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0])
     open("regisxday.txt", "w").write(json.dumps(registros))
 
@@ -77,7 +77,7 @@ def borrarComida(nomre):
 	
 
 
-def comer(fecha,n,quecomo,cant):
+def comer(fecha,n,quecomo,cant): #dependiendo el numero, suma a la respectiva comida.
 	if n==1:
 		desayunar(fecha,quecomo,cant)
 	if n==2:
